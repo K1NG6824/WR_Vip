@@ -1,0 +1,102 @@
+#if defined _k1_easement_weapons   
+    #endinput 
+#endif 
+#define _k1_easement_weapons    
+
+/**
+ *	Проверка что ядро загружено и готово к регистрации функций.
+ *	-
+ * @noparams
+ *	-
+ * @return					true - Ядро загружено.
+ * 							false - Ядро не загружено.
+*/
+native bool K1_EW_IsStarted();
+
+/**
+ *	Вызывается когда K1_WS-плагин загрузился.
+ *	-
+ * @noparams
+ *	-
+ * @noreturn
+*/
+forward void K1_EW_Started();
+
+
+
+/**
+ *	Выдать иммунитет.
+ *	-
+ * @param iClient			Индекс игрока.
+ *	-
+ * @return					true - Успешно выдано false - ошибка либо игрок уже имеет иммунитет.
+*/
+
+native bool K1_EW_GiveImmunity(int iClient);
+
+/**
+ *	Забрать иммунитет.
+ *	-
+ * @param iClient			Индекс игрока.
+ *	-
+ * @return					true - Успешно забрано false - ошибка либо игрок не имеет иммунитет.
+*/
+
+native bool K1_EW_TakeImmunity(int iClient);
+
+/**
+ *	Проверить иммунитет.
+ *	-
+ * @param iClient			Индекс игрока.
+ *	-
+ * @return					true - У игрока иммунитет false - У игрока нет иммунитета.
+*/
+
+native bool K1_EW_CheckImmunity(int iClient);
+
+/**
+ *	Изменить статус ограничения.
+ *	-
+ * @param iStatus			Статус ограничения 0 - Работает 1 - Отключено
+ *	-
+ * @return					true - Успешно
+*/
+
+native bool K1_EW_ChangeStatus(int iStatus);
+
+/**
+ *	Изменить статус ограничения для конкретного оружия
+ *	-
+ * @param iStatus			0 - Работает ограничение для оружия вообще 1 - Отключено ограничение для оружия вообще  2 - Удалить ограничение для конкретного оружия 3 - Добавить ограничение для конкретного оружия
+ * @param iWeapon			Id оружия (найти можно выше) 
+ * @param iPlayers			Количество игроков
+ * @param iCount			Количество оружия
+ *	-
+ * @return					true - Успешно изменено false - Неверное оружие указано либо не найдена запись с количеством игроков для статуса 2
+*/
+
+native bool K1_EW_ChangeStatusWeapon(int iStatus, int iWeapon, int iPlayers, int iCount);
+
+public SharedPlugin __pl_k1_ew = 
+{
+	name = "k1_ew",
+	file = "EW_Core.smx",
+
+	#if defined REQUIRE_PLUGIN
+		required = 1
+	#else
+		required = 0
+	#endif
+};
+
+#if !defined REQUIRE_PLUGIN
+public void __pl_k1_ew_SetNTVOptional()
+{
+	MarkNativeAsOptional("K1_EW_GiveImmunity");
+	MarkNativeAsOptional("K1_EW_TakeImmunity");
+	MarkNativeAsOptional("K1_EW_CheckImmunity");
+	MarkNativeAsOptional("K1_EW_IsStarted");
+	MarkNativeAsOptional("K1_EW_ChangeStatus");
+	MarkNativeAsOptional("K1_EW_ChangeStatusWeapon");
+}
+#endif

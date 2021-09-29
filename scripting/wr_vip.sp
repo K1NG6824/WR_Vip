@@ -29,7 +29,6 @@ public void VIP_OnVIPLoaded()
 
 public void K1_WR_Started()
 {
-	char sBuffer[512];
 	for (int iClient = 1; iClient <= MaxClients; iClient++)
 	{
 		if (IsValidClient(iClient) && VIP_IsClientFeatureUse(iClient, "wr_immunity"))

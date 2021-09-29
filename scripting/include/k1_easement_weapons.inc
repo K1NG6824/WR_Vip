@@ -1,7 +1,7 @@
-#if defined _k1_easement_weapons   
+#if defined _k1_weapon_reduce
     #endinput 
 #endif 
-#define _k1_easement_weapons    
+#define _k1_weapon_reduce
 
 /**
  *	Проверка что ядро загружено и готово к регистрации функций.
@@ -11,7 +11,7 @@
  * @return					true - Ядро загружено.
  * 							false - Ядро не загружено.
 */
-native bool K1_EW_IsStarted();
+native bool K1_WR_IsStarted();
 
 /**
  *	Вызывается когда K1_WS-плагин загрузился.
@@ -20,7 +20,7 @@ native bool K1_EW_IsStarted();
  *	-
  * @noreturn
 */
-forward void K1_EW_Started();
+forward void K1_WR_Started();
 
 
 
@@ -32,7 +32,7 @@ forward void K1_EW_Started();
  * @return					true - Успешно выдано false - ошибка либо игрок уже имеет иммунитет.
 */
 
-native bool K1_EW_GiveImmunity(int iClient);
+native bool K1_WR_GiveImmunity(int iClient);
 
 /**
  *	Забрать иммунитет.
@@ -42,7 +42,7 @@ native bool K1_EW_GiveImmunity(int iClient);
  * @return					true - Успешно забрано false - ошибка либо игрок не имеет иммунитет.
 */
 
-native bool K1_EW_TakeImmunity(int iClient);
+native bool K1_WR_TakeImmunity(int iClient);
 
 /**
  *	Проверить иммунитет.
@@ -52,7 +52,7 @@ native bool K1_EW_TakeImmunity(int iClient);
  * @return					true - У игрока иммунитет false - У игрока нет иммунитета.
 */
 
-native bool K1_EW_CheckImmunity(int iClient);
+native bool K1_WR_CheckImmunity(int iClient);
 
 /**
  *	Изменить статус ограничения.
@@ -62,7 +62,7 @@ native bool K1_EW_CheckImmunity(int iClient);
  * @return					true - Успешно
 */
 
-native bool K1_EW_ChangeStatus(int iStatus);
+native bool K1_WR_ChangeStatus(int iStatus);
 
 /**
  *	Изменить статус ограничения для конкретного оружия
@@ -75,12 +75,12 @@ native bool K1_EW_ChangeStatus(int iStatus);
  * @return					true - Успешно изменено false - Неверное оружие указано либо не найдена запись с количеством игроков для статуса 2
 */
 
-native bool K1_EW_ChangeStatusWeapon(int iStatus, int iWeapon, int iPlayers, int iCount);
+native bool K1_WR_ChangeStatusWeapon(int iStatus, int iWeapon, int iPlayers, int iCount);
 
-public SharedPlugin __pl_k1_ew = 
+public SharedPlugin __pl_k1_wr = 
 {
-	name = "k1_ew",
-	file = "EW_Core.smx",
+	name = "k1_wr",
+	file = "WR_Core.smx",
 
 	#if defined REQUIRE_PLUGIN
 		required = 1
@@ -90,13 +90,13 @@ public SharedPlugin __pl_k1_ew =
 };
 
 #if !defined REQUIRE_PLUGIN
-public void __pl_k1_ew_SetNTVOptional()
+public void __pl_k1_wr_SetNTVOptional()
 {
-	MarkNativeAsOptional("K1_EW_GiveImmunity");
-	MarkNativeAsOptional("K1_EW_TakeImmunity");
-	MarkNativeAsOptional("K1_EW_CheckImmunity");
-	MarkNativeAsOptional("K1_EW_IsStarted");
-	MarkNativeAsOptional("K1_EW_ChangeStatus");
-	MarkNativeAsOptional("K1_EW_ChangeStatusWeapon");
+	MarkNativeAsOptional("K1_WR_GiveImmunity");
+	MarkNativeAsOptional("K1_WR_TakeImmunity");
+	MarkNativeAsOptional("K1_WR_CheckImmunity");
+	MarkNativeAsOptional("K1_WR_IsStarted");
+	MarkNativeAsOptional("K1_WR_ChangeStatus");
+	MarkNativeAsOptional("K1_WR_ChangeStatusWeapon");
 }
 #endif

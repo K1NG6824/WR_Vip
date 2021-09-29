@@ -3,7 +3,7 @@
 
 public Plugin myinfo = 
 {
-    name = "[EW] VIP",
+    name = "[WR] VIP",
     author = "K1NG",
     description = "http//projecttm.ru/",
     version = "1.0"
@@ -16,38 +16,38 @@ public void OnPluginStart()
 
 public void VIP_OnVIPLoaded()
 {
-	VIP_RegisterFeature("ew_immunity", BOOL, HIDE);
-    if(K1_EW_IsStarted())
+	VIP_RegisterFeature("wr_immunity", BOOL, HIDE);
+    if(K1_WR_IsStarted())
     {
         for(int i = 1; i <= MaxClients; ++i)
         {
-            if(IsValidClient(i) && VIP_IsClientVIP(i) && VIP_IsClientFeatureUse(i, "ew_immunity"))
-                K1_EW_GiveImmunity(i);
+            if(IsValidClient(i) && VIP_IsClientVIP(i) && VIP_IsClientFeatureUse(i, "wr_immunity"))
+                K1_WR_GiveImmunity(i);
         }
     }
 }
 
-public void K1_EW_Started()
+public void K1_WR_Started()
 {
 	char sBuffer[512];
 	for (int iClient = 1; iClient <= MaxClients; iClient++)
 	{
-		if (IsValidClient(iClient) && VIP_IsClientFeatureUse(iClient, "ew_immunity"))
+		if (IsValidClient(iClient) && VIP_IsClientFeatureUse(iClient, "wr_immunity"))
 		{
-			K1_EW_GiveImmunity(iClient);
+			K1_WR_GiveImmunity(iClient);
 		}
 	}
 }
 
 public void OnPluginEnd()
 {
-	VIP_UnregisterFeature("ew_immunity");
+	VIP_UnregisterFeature("wr_immunity");
 }
 
 public void VIP_OnVIPClientLoaded(int iClient)
 {
-	if(K1_EW_IsStarted() && VIP_IsClientFeatureUse(iClient, "ew_immunity"))
-		K1_EW_GiveImmunity(iClient);
+	if(K1_WR_IsStarted() && VIP_IsClientFeatureUse(iClient, "wr_immunity"))
+		K1_WR_GiveImmunity(iClient);
 }
 
 bool IsValidClient(int iClient)

@@ -49,6 +49,12 @@ public void VIP_OnVIPClientLoaded(int iClient)
 		K1_WR_GiveImmunity(iClient);
 }
 
+public void VIP_OnVIPClientRemoved(int iClient, const char[] szReason, int iAdmin)
+{
+	if(K1_WR_IsStarted())
+		K1_WR_TakeImmunity(iClient);
+}
+
 bool IsValidClient(int iClient)
 {
 	if (!(1 <= iClient <= MaxClients) || !IsClientInGame(iClient) || IsFakeClient(iClient) || IsClientSourceTV(iClient) || IsClientReplay(iClient))

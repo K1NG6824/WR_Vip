@@ -1,5 +1,5 @@
 #include <vip_core>
-#include <k1_easement_weapons>
+#include <k1_weapon_reduce>
 
 public Plugin myinfo = 
 {

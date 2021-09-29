@@ -1,4 +1,4 @@
-# EW_VIP
-Модуль для ядра Easement Weapons
+# WR_VIP
+Модуль для ядра Weapon Reduce
 
-Выдает VIP игрокам иммунитет к запрету оружия в EW 
+Выдает VIP игрокам иммунитет к запрету оружия в WR - http://projecttm.ru/product?id=251

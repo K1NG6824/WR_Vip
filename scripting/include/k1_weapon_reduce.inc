@@ -29,7 +29,7 @@ forward void K1_WR_Started();
  *	-
  * @param iClient			Индекс игрока.
  *	-
- * @return					true - Успешно выдано false - ошибка либо игрок уже имеет иммунитет.
+ * @return					true - Успешно выдано false - игрок не валидный
 */
 
 native bool K1_WR_GiveImmunity(int iClient);
@@ -49,7 +49,7 @@ native bool K1_WR_TakeImmunity(int iClient);
  *	-
  * @param iClient			Индекс игрока.
  *	-
- * @return					true - У игрока иммунитет false - У игрока нет иммунитета.
+ * @return					1 - Количество выданных иммунитетов у игрока -1 - Игрок не валидный.
 */
 
 native bool K1_WR_CheckImmunity(int iClient);
@@ -77,6 +77,16 @@ native bool K1_WR_ChangeStatus(int iStatus);
 
 native bool K1_WR_ChangeStatusWeapon(int iStatus, int iWeapon, int iPlayers, int iCount);
 
+/**
+ *	Выбросить оружие
+ *	-
+ * @param iClient			Индекс игрока.
+ *	-
+ * @return					true - Оружие было выброшено false - Либо запретного оружия нет либо не валидный игрок
+*/
+native bool K1_WR_DropWeapon(int iClient);
+
+
 public SharedPlugin __pl_k1_wr = 
 {
 	name = "k1_wr",
@@ -98,5 +108,6 @@ public void __pl_k1_wr_SetNTVOptional()
 	MarkNativeAsOptional("K1_WR_IsStarted");
 	MarkNativeAsOptional("K1_WR_ChangeStatus");
 	MarkNativeAsOptional("K1_WR_ChangeStatusWeapon");
+	MarkNativeAsOptional("K1_WR_DropWeapon");
 }
 #endif

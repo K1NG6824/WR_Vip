@@ -52,7 +52,10 @@ public void VIP_OnVIPClientLoaded(int iClient)
 public void VIP_OnVIPClientRemoved(int iClient, const char[] szReason, int iAdmin)
 {
 	if(K1_WR_IsStarted())
+	{
 		K1_WR_TakeImmunity(iClient);
+		K1_WR_DropWeapon(iClient);
+	}
 }
 
 bool IsValidClient(int iClient)
